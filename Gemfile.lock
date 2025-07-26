@@ -130,6 +130,7 @@ DEPENDENCIES
   middleman-autoprefixer (~> 3.0)
   terser (~> 1.1)
   tzinfo-data
+  uri (~> 1.0)
   wdm (~> 0.1)
 
 BUNDLED WITH

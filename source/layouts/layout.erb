@@ -1,16 +1,55 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Use the title from a page's frontmatter if it has one -->
-    <title><%= current_page.data.title || "Middleman" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title><%= current_page.data.title || "Grill-o" %></title>
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site" %>
   </head>
   <body>
-    <%= yield %>
+    <header>
+      <div class="logo">
+        <h1>Grill-o</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reservation">Reservation</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+<footer>
+  <div class="main">
+    <h2>RESTAURANT</h2>
+    <button>Reserve A Table</button>
+    <hr />
+    <p>368 St. Panama City, Florida, USA</p>
+    <p>(850) 457 6688</p>
+    <div class="social">
+<a href="#" aria-label="Facebook">
+        <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="Facebook Icon" />
+      </a>
+      <a href="#" aria-label="Instagram">
+        <img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram Icon" />
+      </a>
+      <a href="#" aria-label="YouTube">
+        <img src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" alt="YouTube Icon" />
+      </a>
+    </div>
+  </div>
+  <p>&copy; RESTAURANT</p>
+</footer>
+
   </body>
 </html>
