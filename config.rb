@@ -44,3 +44,20 @@ page '/*.txt', layout: false
 #   activate :minify_css
 #   activate :minify_javascript, compressor: Terser.new
 # end
+
+configure :development do
+  module Rack
+    class DowncaseHeaders
+      def initialize(app)
+        @app = app
+      end
+
+      def call(env)
+        status, headers, body = @app.call(env)
+        # Lower-case all header names
+        [status, headers.transform_keys(&:downcase), body]
+      end
+    end
+  end
+  use Rack::DowncaseHeaders
+end

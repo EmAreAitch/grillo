@@ -1,0 +1,75 @@
+/* === FOOTER === */
+/* ✅ Put this in: layout/_footer.scss */
+footer {
+  background: #1f1f1f;
+  text-align: center;
+  color: #fff;
+
+  .main {
+    padding: 3rem 2rem;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      color: $primary-color;
+    }
+
+    button {
+      padding: 0.5rem 1.5rem;
+      background: transparent;
+      color: white;
+      border: 1px solid $primary-color;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+
+      &:hover {
+        background: rgba(15, 177, 161, 0.1);
+      }
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid $primary-color;
+      margin: 2rem auto;
+      width: 60%;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .social {
+      margin: 1rem 0;
+
+      a {
+        display: inline-block;
+        margin: 0 0.5rem;
+        color: #ccc;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #fff;
+        }
+
+        img {
+          width: 20px;
+        }
+      }
+    }
+  }
+
+  p:last-child {
+    background: #111;
+    margin: 0;
+    padding: 0.75rem 0;
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+}

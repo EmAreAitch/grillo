@@ -8,8 +8,10 @@ title: Welcome to Grill-o
   { name: 'Noferatu', description: 'A tasty classic with unique spices.', price: 12 },
   { name: 'Burger Deluxe', description: 'Juicy burger with fries.', price: 15 },
   { name: 'Pasta Primavera', description: 'Pasta with fresh vegetables.', price: 14 },
-  { name: 'Grilled Salmon', description: 'Perfectly grilled salmon fillet.', price: 18 }
+  { name: 'Grilled Salmon', description: 'Perfectly grilled salmon fillet.', price: 18 },
+  { name: 'Chargrilled Ribeye', description: 'Tender ribeye steak grilled over open flame.', price: 24 }
 ] %>
+
 
 <% gallery_images = (1..9).to_a %>
 
@@ -20,15 +22,18 @@ title: Welcome to Grill-o
 
 <!-- Hero / Banner -->
 <section id="hero">
-  <img src="https://placehold.co/1200x400?text=Hero+Image" alt="Hero Banner">
+  <div class="hero-content">
+    <h1>Savor the Art of Fire & Flavor</h1>
+    <p>Authentic flavors. Unforgettable moments.</p>
+    <a href="#menu" class="cta">View Menu</a>
+  </div>
 </section>
 
 <!-- Welcome Section -->
 <section id="welcome">
-  <h2>WELCOME TO RESTAURANT</h2>  
-  <div class="welcome-images">
-    <img src="https://placehold.co/400x300?text=Welcome+1" alt="Welcome Image 1">
-    <img src="https://placehold.co/400x300?text=Welcome+2" alt="Welcome Image 2">
+  <h2>WELCOME TO GRILL-O</h2>  
+  <div class="welcome-images">    
+    <img src="/images/welcome.avif" alt="Welcome Image 2">
   </div>
   <p>Welcome to our restaurant! We serve delicious food made with love and fresh ingredients.</p>
 </section>
@@ -51,9 +56,9 @@ title: Welcome to Grill-o
     <span>Rice</span>
   </div>
   <div class="menu-items">
-    <% menu_items.each do |item| %>
+    <% menu_items.each_with_index do |item, index| %>
       <div class="menu-item">
-        <img src="https://placehold.co/200x150?text=<%= ERB::Util.url_encode(item[:name]) %>" alt="<%= item[:name] %>">
+        <img src="/images/<%= index + 1 %>.avif" alt="<%= item[:name] %>">
         <div class="info">
           <h3><%= item[:name] %></h3>
           <p><%= item[:description] %></p>
@@ -71,7 +76,7 @@ title: Welcome to Grill-o
   <h2>GALLERY</h2>
   <div class="gallery-grid">
     <% gallery_images.each do |i| %>
-      <img src="https://placehold.co/300x200?text=Gallery+<%= i %>" alt="Gallery Image <%= i %>">
+      <img src="/images/<%= i %>.avif" alt="Gallery Image <%= i %>">
     <% end %>
   </div>
 </section>

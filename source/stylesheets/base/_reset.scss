@@ -1,0 +1,42 @@
+/* === RESET === */
+/* ✅ Put this in: base/_reset.scss */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  color: $text-color;
+  background: $background-color;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-color;
+  transition: color 0.3s;
+}
+
+ul {
+  list-style: none;
+}
+
+hr {
+  width: 50%;
+  margin: 0 auto;
+  border-style: solid;
+  border-color: $primary-color;  
+  border-width: 3px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 8rem;
+
+  @media(max-width: 768px) {
+    padding: 2rem;
+  }
+}
