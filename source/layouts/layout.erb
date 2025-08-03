@@ -5,26 +5,32 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png"  href="/images/favicon.png">  
     <title><%= current_page.data.title || "Grill-o" %></title>
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site", defer: true %>
   </head>
   <body>
 <header>
-  <div class="logo">
-    <h1>Grill-o</h1>
-  </div>
-  <div>
+  <div class="header-container">
+    <div class="logo">
+      <a href="/">
+        <img src="/images/favicon.png" alt="Grill-o Logo">
+      </a>
+      <a href="/"><h1>Grill-o</h1></a>
+    </div>
+    <div>
     <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
+      <ul>        
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#reservation">Reservation</a></li>
+        <li><a href="#about">About Us</a></li>        
+        <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#reservation">Reservation</a></li>
       </ul>
     </nav>
+    </div>
   </div>
 </header>
 

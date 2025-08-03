@@ -3,21 +3,16 @@ title: Welcome to Grill-o
 ---
 
 <%# ---------- Variables ---------- %>
-<% menu_items = [
-  { name: 'Salad le salis', description: 'Fresh salad with special dressing.', price: 10 },
-  { name: 'Noferatu', description: 'A tasty classic with unique spices.', price: 12 },
-  { name: 'Burger Deluxe', description: 'Juicy burger with fries.', price: 15 },
-  { name: 'Pasta Primavera', description: 'Pasta with fresh vegetables.', price: 14 },
-  { name: 'Grilled Salmon', description: 'Perfectly grilled salmon fillet.', price: 18 },
-  { name: 'Chargrilled Ribeye', description: 'Tender ribeye steak grilled over open flame.', price: 24 }
-] %>
+
+<% menu_items = data.menu %>
 
 
-<% gallery_images = (1..9).to_a %>
+<% gallery_images = (1..6).to_a %>
 
 <% testimonials = [
   { name: 'Pipop', message: 'Best dining experience ever! Highly recommended.' },
-  { name: 'Mimi', message: 'The food was delicious and the staff was amazing.' }
+  { name: 'Mimi', message: 'The food was delicious and the staff was amazing.' },
+  { name: 'JoJo', message: "Dream restaurant and the food cured my mother's cancer." }
 ] %>
 
 <!-- Hero / Banner -->
@@ -43,27 +38,21 @@ title: Welcome to Grill-o
 <!-- Menu Section -->
 <section id="menu">
   <h2>MENU</h2>
-  <div class="menu-categories">
-    <span class="active">Popular Dishes</span>
-    <span>Offers</span>
-    <span>Veg</span>
-    <span>Non-Veg</span>
-    <span>Appetizer</span>
-    <span>Main</span>
-    <span>Side</span>
-    <span>Bread</span>
-    <span>Dessert</span>
-    <span>Rice</span>
+  <div class="menu-categories">  
+    <% menu_items.keys.each do %>
+      <%= content_tag(:span, it.humanize, class: (it == menu_items.keys.first ? "active" : ""), "data-category": it) %>
+    <% end %>    
   </div>
+
   <div class="menu-items">
-    <% menu_items.each_with_index do |item, index| %>
+    <% menu_items.popular.each_with_index do |item, index| %>
       <div class="menu-item">
-        <img src="/images/<%= index + 1 %>.avif" alt="<%= item[:name] %>">
+        <img src="/images/<%= index + 1 %>.avif" alt="<%= item.name %>">
         <div class="info">
-          <h3><%= item[:name] %></h3>
-          <p><%= item[:description] %></p>
+          <h3><%= item.name %></h3>
+          <p><%= item.description %></p>
         </div>
-        <span class="price">$<%= item[:price] %></span>
+        <span class="price">£<%= item.price %></span>
       </div>
     <% end %>
   </div>
@@ -83,9 +72,24 @@ title: Welcome to Grill-o
 
 <hr>
 
+<!-- About Us Section -->
+<section id="about">
+  <h2>ABOUT US</h2>
+  <div class="about-content">
+    <div class="about-text">
+      <p>At Grill-o, we believe that great food brings people together. Our chefs craft each dish with passion, using the freshest ingredients and a touch of creativity. Whether you're here for a family dinner, a romantic date, or a casual hangout, we promise an unforgettable dining experience.</p>
+      <p>Come and savor the warmth, the fire, and the flavor that make Grill-o more than just a restaurant — it’s a place to create memories.</p>
+    </div>
+    <div class="about-image">
+      <img src="/images/about.png" alt="Our Team at Grill-o">
+    </div>
+  </div>
+</section>
+
+<hr>
 <!-- Testimonials Section -->
-<section class="testimonials">
-  <h2>Testimonials</h2>
+<section id="testimonials">
+  <h2>TESTIMONIALS</h2>
   <% testimonials.each do |testimonial| %>
     <div class="testimonial-box">
       <div class="stars">
@@ -95,7 +99,7 @@ title: Welcome to Grill-o
           </svg>
         <% end %>
       </div>
-      <a href="#"><%= testimonial[:name] %></a>
+      <a><%= testimonial[:name] %></a>
       <p><%= testimonial[:message] %></p>
     </div>
   <% end %>
