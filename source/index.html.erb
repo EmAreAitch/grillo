@@ -110,7 +110,7 @@
     <div class="reservation-form">
       <h2><%= reservation.heading %></h2>
       <p><%= reservation.description %></p>
-      <form>
+      <form name="reservation" netlify method="POST">
         <input type="text" placeholder="Your name" />
         <input type="email" placeholder="Email" />
         <input type="text" placeholder="Phone Number" />
