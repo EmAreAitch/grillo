@@ -11,6 +11,12 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  const year = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = year;
+  }
+  
   const categories = document.querySelectorAll(".menu-categories span");
   const menuItemsContainer = document.querySelector(".menu-items");
 
@@ -31,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category.classList.add("active");
 
       const selected = category.getAttribute("data-category");
-      const items = menuData[selected];
+      const items = menuData.catalogue.find(e => e.category == selected).items;
 
       if (!items) {
         menuItemsContainer.innerHTML = `<p>No items found for ${selected}.</p>`;

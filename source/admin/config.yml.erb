@@ -1,0 +1,173 @@
+<% if development? %>
+local_backend: true
+
+<% end %>
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "source/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "<%= config[:root_url] %>"
+logo_url: "<%= image_path 'logo.png' %>"
+
+collections:
+  - name: "content"
+    label: "Content"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "data/home.yml"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "string" }
+              - { label: "CTA Text", name: "cta_text", widget: "string" }
+              - { label: "CTA Link", name: "cta_link", widget: "string" }
+
+          - label: "Welcome Section"
+            name: "welcome"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+
+          - label: "Gallery"
+            name: "gallery"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                field: { label: "Image", name: "", widget: "image" }
+
+          - label: "About"
+            name: "about"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            collapsed: true
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Message", name: "message", widget: "text" }
+
+          - label: "Reservation"
+            name: "reservation"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "People Options"
+                name: "people_options"
+                widget: "list"
+                field: { label: "Option", name: "", widget: "string" }
+              - label: "Time Slots"
+                name: "time_slots"
+                widget: "list"
+                field: { label: "Time", name: "", widget: "string" }
+              - label: "Open Hours"
+                name: "open_hours"
+                widget: "object"
+                fields:
+                  - { label: "Weekdays", name: "weekdays", widget: "string" }
+                  - { label: "Saturday", name: "saturday", widget: "string" }
+                  - { label: "Sunday", name: "sunday", widget: "string" }
+              - label: "Contact"
+                name: "contact"
+                widget: "object"
+                fields:
+                  - { label: "Phone", name: "phone", widget: "string" }
+                  - { label: "Email", name: "email", widget: "string" }
+
+      - label: "Site Settings"
+        name: "site"
+        file: "data/site.yml"
+        fields:          
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Favicon", name: "favicon", widget: "image" }
+          - { label: "Logo", name: "logo", widget: "image" }
+
+          - label: "Styles"
+            name: "styles"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Primary Color", name: "primary_color", widget: "color" }
+              - { label: "Secondary Color", name: "secondary_color", widget: "color" }
+              - { label: "Background Color", name: "background_color", widget: "color" }
+              - { label: "Text Color", name: "text_color", widget: "color" }
+              - { label: "Heading Color", name: "heading_color", widget: "color" }
+              - { label: "Font Family", name: "font_family", widget: "string" }
+
+          - label: "Navigation"
+            name: "navigation"
+            widget: "list"
+            collapsed: true
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Anchor", name: "anchor", widget: "string" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Copyright", name: "copyright", widget: "string" }
+              - label: "Social Links"
+                name: "socials"
+                widget: "list"
+                fields:
+                  - { label: "Platform", name: "platform", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Icon", name: "icon", widget: "image" }
+
+      - label: "Menu"
+        name: "menu"
+        file: "data/menu.yml"
+        fields:
+          - label: "Catalogue"
+            name: "catalogue"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.category}}"
+            fields:
+              - { label: "Category", name: "category", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.name}} – £{{fields.price}}"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Price", name: "price", widget: "number", value_type: "float" }
+                  - { label: "Image", name: "image", widget: "image", required: false, media_library: { config: { multiple: false } } }
+
+editor:
+  preview: false

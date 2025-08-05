@@ -61,3 +61,5 @@ configure :development do
   end
   use Rack::DowncaseHeaders
 end
+
+set :root_url, ENV['URL'] || 'http://localhost:4567'

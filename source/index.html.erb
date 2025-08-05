@@ -1,36 +1,31 @@
----
-title: Welcome to Grill-o
----
+<% content_for :title, data.home.title %>
 
 <%# ---------- Variables ---------- %>
-
-<% menu_items = data.menu %>
-
-
-<% gallery_images = (1..6).to_a %>
-
-<% testimonials = [
-  { name: 'Pipop', message: 'Best dining experience ever! Highly recommended.' },
-  { name: 'Mimi', message: 'The food was delicious and the staff was amazing.' },
-  { name: 'JoJo', message: "Dream restaurant and the food cured my mother's cancer." }
-] %>
+<% home = data.home %>
+<% menu_items = data.menu.catalogue %>
+<% gallery_images = home.gallery.images %>
+<% testimonials = home.testimonials %>
+<% reservation = home.reservation %>
+<% welcome = home.welcome %>
+<% hero = home.hero %>
+<% about = home.about %>
 
 <!-- Hero / Banner -->
 <section id="hero">
   <div class="hero-content">
-    <h1>Savor the Art of Fire & Flavor</h1>
-    <p>Authentic flavors. Unforgettable moments.</p>
-    <a href="#menu" class="cta">View Menu</a>
+    <h1><%= hero.headline %></h1>
+    <p><%= hero.subheadline %></p>
+    <a href="<%= hero.cta_link %>" class="cta"><%= hero.cta_text %></a>
   </div>
 </section>
 
 <!-- Welcome Section -->
 <section id="welcome">
-  <h2>WELCOME TO GRILL-O</h2>  
+  <h2><%= welcome.title %></h2>  
   <div class="welcome-images">    
-    <img src="/images/welcome.avif" alt="Welcome Image 2">
+    <img src="<%= welcome.image %>" alt="Welcome Image">
   </div>
-  <p>Welcome to our restaurant! We serve delicious food made with love and fresh ingredients.</p>
+  <p><%= welcome.text %></p>
 </section>
 
 <hr>
@@ -39,13 +34,13 @@ title: Welcome to Grill-o
 <section id="menu">
   <h2>MENU</h2>
   <div class="menu-categories">  
-    <% menu_items.keys.each do %>
-      <%= content_tag(:span, it.humanize, class: (it == menu_items.keys.first ? "active" : ""), "data-category": it) %>
+    <% menu_items.map(&:category).each do |it| %>
+      <%= content_tag(:span, it.humanize, class: (it == menu_items.first.category ? "active" : ""), "data-category": it) %>
     <% end %>    
   </div>
 
   <div class="menu-items">
-    <% menu_items.popular.each_with_index do |item, index| %>
+    <% menu_items.first.items.each_with_index do |item, index| %>
       <div class="menu-item">
         <img src="/images/<%= index + 1 %>.avif" alt="<%= item.name %>">
         <div class="info">
@@ -64,8 +59,8 @@ title: Welcome to Grill-o
 <section id="gallery">
   <h2>GALLERY</h2>
   <div class="gallery-grid">
-    <% gallery_images.each do |i| %>
-      <img src="/images/<%= i %>.avif" alt="Gallery Image <%= i %>">
+    <% gallery_images.each_with_index do |image, i| %>
+      <img src="<%= image %>" alt="Gallery Image <%= i + 1 %>">
     <% end %>
   </div>
 </section>
@@ -74,19 +69,21 @@ title: Welcome to Grill-o
 
 <!-- About Us Section -->
 <section id="about">
-  <h2>ABOUT US</h2>
+  <h2><%= about.title %></h2>
   <div class="about-content">
     <div class="about-text">
-      <p>At Grill-o, we believe that great food brings people together. Our chefs craft each dish with passion, using the freshest ingredients and a touch of creativity. Whether you're here for a family dinner, a romantic date, or a casual hangout, we promise an unforgettable dining experience.</p>
-      <p>Come and savor the warmth, the fire, and the flavor that make Grill-o more than just a restaurant — it’s a place to create memories.</p>
+      <% about.paragraphs.each do |para| %>
+        <p><%= para %></p>
+      <% end %>
     </div>
     <div class="about-image">
-      <img src="/images/about.avif" alt="Our Team at Grill-o">
+      <img src="<%= about.image %>" alt="Our Team at Grill-o">
     </div>
   </div>
 </section>
 
 <hr>
+
 <!-- Testimonials Section -->
 <section id="testimonials">
   <h2>TESTIMONIALS</h2>
@@ -99,50 +96,47 @@ title: Welcome to Grill-o
           </svg>
         <% end %>
       </div>
-      <a><%= testimonial[:name] %></a>
-      <p><%= testimonial[:message] %></p>
+      <a><%= testimonial.name %></a>
+      <p><%= testimonial.message %></p>
     </div>
   <% end %>
 </section>
 
+<hr>
 
 <!-- Reservation Section -->
 <section id="reservation">
   <div class="reservation-container">
     <div class="reservation-form">
-      <h2>Make A Reservation</h2>
-      <p>
-        You can book a table online easily in just a minute. Reservations
-        are for lunch and dinner, check the availability of your table & book
-        it now!
-      </p>
+      <h2><%= reservation.heading %></h2>
+      <p><%= reservation.description %></p>
       <form>
         <input type="text" placeholder="Your name" />
         <input type="email" placeholder="Email" />
         <input type="text" placeholder="Phone Number" />
         <select>
-          <option>2 people</option>
-          <option>3 people</option>
-          <option>4 people</option>
+          <% reservation.people_options.each do |opt| %>
+            <option><%= opt %></option>
+          <% end %>
         </select>
         <select>
-          <option>8:00 PM</option>
-          <option>8:30 PM</option>
-          <option>9:00 PM</option>
+          <% reservation.time_slots.each do |slot| %>
+            <option><%= slot %></option>
+          <% end %>
         </select>
-        <input type="date"/ id="reservation-date">
+        <input type="date" id="reservation-date" />
         <textarea placeholder="Add a special request (optional)"></textarea>
         <button type="submit">Reserve A Table</button>
       </form>
     </div>
     <div class="reservation-info" id="contact">
       <h3>-Open Hour-</h3>
-      <p>Weekdays <span>9AM–12PM</span></p>
-      <p>Saturday <span>9AM–10PM</span></p>
-      <p>Sunday <span>10AM–10PM</span></p>
+      <p>Weekdays <span><%= reservation.open_hours.weekdays %></span></p>
+      <p>Saturday <span><%= reservation.open_hours.saturday %></span></p>
+      <p>Sunday <span><%= reservation.open_hours.sunday %></span></p>
       <h3>-Contact us-</h3>
-      <p>(850) 457 6688</p>
-      <p>contact@markups.io</p>
+      <p><%= reservation.contact.phone %></p>
+      <p><%= reservation.contact.email %></p>
     </div>
   </div>
 </section>

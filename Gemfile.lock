@@ -94,6 +94,9 @@ GEM
       toml
       uglifier (>= 3, < 5)
       webrick
+    middleman-sprockets (4.1.1)
+      middleman-core (~> 4.0)
+      sprockets (>= 3.0)
     minitest (5.25.5)
     padrino-helpers (0.15.3)
       i18n (>= 0.6.7, < 2)
@@ -125,6 +128,10 @@ GEM
       ffi (~> 1.9)
     securerandom (0.4.1)
     servolux (0.13.0)
+    sprockets (4.2.2)
+      concurrent-ruby (~> 1.0)
+      logger
+      rack (>= 2.2.4, < 4)
     stringio (3.1.7)
     temple (0.10.4)
     terser (1.2.6)
@@ -148,6 +155,7 @@ DEPENDENCIES
   irb (~> 1.15)
   middleman (~> 4.5)
   middleman-autoprefixer (~> 3.0)
+  middleman-sprockets (~> 4.1)
   terser (~> 1.1)
   tzinfo-data
   uri (~> 1.0)

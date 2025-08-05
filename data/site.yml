@@ -1,0 +1,37 @@
+name: Grill-o
+favicon: /images/favicon.png
+logo: /images/logo.png
+styles:
+  primary_color: "#16796A"
+  secondary_color: "#0fb1a1"
+  background_color: "#ffffff"
+  text_color: "#333"
+  heading_color: "#16796A"
+  font_family: "'Montserrat', sans-serif"
+navigation:
+  - label: Menu
+    anchor: /#menu
+  - label: About Us
+    anchor: /#about
+  - label: Testimonials
+    anchor: /#testimonials
+  - label: Contact
+    anchor: /#contact
+  - label: Reservation
+    anchor: /#reservation
+  - label: Admin
+    anchor: /admin/
+footer:
+  address: 368 St. Panama City, Florida, USA
+  phone: (850) 457 6688
+  copyright: © Grill-o
+  socials:
+    - platform: Facebook
+      url: "#"
+      icon: https://img.icons8.com/?size=100&id=118497&format=png&color=000000
+    - platform: Instagram
+      url: "#"
+      icon: https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000
+    - platform: YouTube
+      url: "#"
+      icon: https://img.icons8.com/?size=100&id=19318&format=png&color=000000

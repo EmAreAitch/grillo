@@ -4,61 +4,60 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png"  href="/images/favicon.png">  
-    <title><%= current_page.data.title || "Grill-o" %></title>
+    <link rel="icon" type="image/png" href="<%= data.site.favicon %>">  
+    
+    <title>
+      <%= "#{(current_page.data.title || yield_content(:title))&.concat(' | ')}#{data.site.name}" %>
+    </title>
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site", defer: true %>
+    <%= yield_content :head %>
   </head>
+
   <body>
-<header>
-  <div class="header-container">
-    <div class="logo">
-      <a href="/">
-        <img src="/images/logo.png" alt="Grill-o Logo">
-      </a>
-      <a href="/"><h1>Grill-o</h1></a>
-    </div>
-    <div>
-    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-    <nav>
-      <ul>        
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#about">About Us</a></li>        
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#reservation">Reservation</a></li>
-      </ul>
-    </nav>
-    </div>
-  </div>
-</header>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <a href="/">
+            <img src="<%= data.site.logo %>" alt="<%= data.site.name %> Logo">
+          </a>
+          <a href="/"><h1><%= data.site.name %></h1></a>
+        </div>
+        <div>
+          <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+          <nav>
+            <ul>
+              <% data.site.navigation.each do |nav| %>
+                <li><a href="<%= nav.anchor %>"><%= nav.label %></a></li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
 
     <main>
       <%= yield %>
     </main>
 
-<footer>
-  <div class="main">
-    <h2>Grill-o</h2>
-    <a href="/#reservation" class="button">Reserve A Table</a>
-    <hr />
-    <p>368 St. Panama City, Florida, USA</p>
-    <p>(850) 457 6688</p>
-    <div class="social">
-<a href="#" aria-label="Facebook">
-        <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="Facebook Icon" />
-      </a>
-      <a href="#" aria-label="Instagram">
-        <img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram Icon" />
-      </a>
-      <a href="#" aria-label="YouTube">
-        <img src="https://img.icons8.com/?size=100&id=19318&format=png&color=000000" alt="YouTube Icon" />
-      </a>
-    </div>
-  </div>
-  <p>&copy; RESTAURANT</p>
-</footer>
-
+    <footer>
+      <div class="main">
+        <h2><%= data.site.name %></h2>
+        <a href="/#reservation" class="button">Reserve A Table</a>
+        <hr />
+        <p><%= data.site.footer.address %></p>
+        <p><%= data.site.footer.phone %></p>
+        <div class="social">
+          <% data.site.footer.socials.each do |social| %>
+            <a href="<%= social.url %>" aria-label="<%= social.platform %>">
+              <img src="<%= social.icon %>" alt="<%= social.platform %> Icon" />
+            </a>
+          <% end %>
+        </div>
+      </div>
+      <p><%= data.site.footer.copyright %> <span id="year"></span></p>
+    </footer>
   </body>
 </html>

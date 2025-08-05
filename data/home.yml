@@ -1,0 +1,57 @@
+title: Welcome to Grill-o
+hero:
+  headline: Savor the Art of Fire & Flavor
+  subheadline: Authentic flavors. Unforgettable moments.
+  cta_text: View Menu
+  cta_link: "#menu"
+welcome:
+  title: WELCOME TO GRILL-O
+  text: Welcome to our restaurant! We serve delicious food made with love and
+    fresh ingredients.
+  image: /images/welcome.avif
+gallery:
+  images:
+    - /images/1.avif
+    - /images/2.avif
+    - /images/3.avif
+    - /images/4.avif
+    - /images/5.avif
+    - /images/6.avif
+about:
+  title: ABOUT US
+  paragraphs:
+    - At Grill-o, we believe that great food brings people together. Our chefs
+      craft each dish with passion, using the freshest ingredients and a touch
+      of creativity.
+    - Whether you're here for a family dinner, a romantic date, or a casual
+      hangout, we promise an unforgettable dining experience.
+    - Come and savor the warmth, the fire, and the flavor that make Grill-o more
+      than just a restaurant — it’s a place to create memories.
+  image: /images/about.avif
+testimonials:
+  - name: Pipop
+    message: Best dining experience ever! Highly recommended.
+  - name: Mimi
+    message: The food was delicious and the staff was amazing.
+  - name: JoJo
+    message: Dream restaurant and the food cured my mother's cancer.
+reservation:
+  heading: Make A Reservation
+  description: >
+    You can book a table online easily in just a minute. Reservations are for
+    lunch and dinner, check the availability of your table & book it now!
+  people_options:
+    - 2 people
+    - 3 people
+    - 4 people
+  time_slots:
+    - 8:00 PM
+    - 8:30 PM
+    - 9:00 PM
+  open_hours:
+    weekdays: 9AM–12PM
+    saturday: 9AM–10PM
+    sunday: 10AM–10PM
+  contact:
+    phone: (850) 457 6688
+    email: contact@grill-o.com
