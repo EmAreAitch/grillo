@@ -110,24 +110,29 @@
     <div class="reservation-form">
       <h2><%= reservation.heading %></h2>
       <p><%= reservation.description %></p>
-      <form name="reservation" netlify method="POST">
-        <input type="text" placeholder="Your name" />
-        <input type="email" placeholder="Email" />
-        <input type="text" placeholder="Phone Number" />
-        <select>
+      <form name="reservation" netlify method="POST">      
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="phone" placeholder="Phone Number" required />
+      
+        <select name="people" required>
           <% reservation.people_options.each do |opt| %>
             <option><%= opt %></option>
           <% end %>
         </select>
-        <select>
+      
+        <select name="time" required>
           <% reservation.time_slots.each do |slot| %>
             <option><%= slot %></option>
           <% end %>
         </select>
-        <input type="date" id="reservation-date" />
-        <textarea placeholder="Add a special request (optional)"></textarea>
+      
+        <input type="date" name="date" id="reservation-date" required />
+        <textarea name="requests" placeholder="Add a special request (optional)"></textarea>
+      
         <button type="submit">Reserve A Table</button>
       </form>
+      
     </div>
     <div class="reservation-info" id="contact">
       <h3>-Open Hour-</h3>
