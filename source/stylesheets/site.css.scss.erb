@@ -663,3 +663,41 @@ header {
     }
   }
 }
+
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 80vh;
+  text-align: center;
+  padding: 2rem;
+
+  h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    color: $text-color;
+    margin-bottom: 1.5rem;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: $primary-color;
+    color: #fff;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+}
