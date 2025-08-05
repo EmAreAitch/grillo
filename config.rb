@@ -62,5 +62,11 @@ configure :development do
   use Rack::DowncaseHeaders
 end
 
+configure :build do
+  activate :asset_hash do |opts|
+    opts.exts = config[:asset_extensions] + %w(.avif .json) - %w(.ico)
+  end
+end
+
 set :root_url, ENV['URL'] || 'http://localhost:4567'
 activate :directory_indexes
