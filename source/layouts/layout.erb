@@ -42,22 +42,31 @@
       <%= yield %>
     </main>
 
-    <footer>
-      <div class="main">
-        <h2><%= data.site.name %></h2>
-        <a href="/#reservation" class="button">Reserve A Table</a>
-        <hr />
-        <p><%= data.site.footer.address %></p>
-        <p><%= data.site.footer.phone %></p>
-        <div class="social">
-          <% data.site.footer.socials.each do |social| %>
-            <a href="<%= social.url %>" aria-label="<%= social.platform %>">
-              <img src="<%= social.icon %>" alt="<%= social.platform %> Icon" />
-            </a>
-          <% end %>
-        </div>
-      </div>
-      <p><%= data.site.footer.copyright %> <span id="year"></span></p>
-    </footer>
+<footer>
+  <div class="main">
+    <h2><%= data.site.name %></h2>
+    <a href="/#reservation" class="button">Reserve A Table</a>
+    <hr />
+    <p><%= data.site.footer.address %></p>
+    <p><%= data.site.footer.phone %></p>
+    <div class="social">
+      <% data.site.footer.socials.each do |social| %>
+        <a href="<%= social.url %>" aria-label="<%= social.platform %>">
+          <img src="<%= social.icon %>" alt="<%= social.platform %> Icon" />
+        </a>
+      <% end %>
+    </div>
+  </div>
+  <p>
+    <%= data.site.footer.copyright %> <span id="year"></span>
+    &nbsp;|&nbsp;
+    <a href="/privacy-policy">Privacy Policy</a>
+    &nbsp;|&nbsp;
+    <a href="/terms-and-conditions">Terms</a>
+    &nbsp;|&nbsp;
+    <a href="/cookies-policy">Cookies</a>
+  </p>
+</footer>
+
   </body>
 </html>

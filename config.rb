@@ -63,3 +63,4 @@ configure :development do
 end
 
 set :root_url, ENV['URL'] || 'http://localhost:4567'
+activate :directory_indexes
