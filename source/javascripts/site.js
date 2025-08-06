@@ -72,3 +72,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const wrapper = document.querySelector('.menu-scroll-wrapper');
+  const container = wrapper.querySelector('.menu-categories');
+  const leftBtn = wrapper.querySelector('.scroll-btn.left');
+  const rightBtn = wrapper.querySelector('.scroll-btn.right');
+  const scrollAmount = 100;
+
+  function updateButtons() {
+    leftBtn.disabled = container.scrollLeft === 0;
+    rightBtn.disabled = Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth;
+  }
+
+  leftBtn.addEventListener('click', () => {
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  rightBtn.addEventListener('click', () => {
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  container.addEventListener('scroll', updateButtons);
+
+  // Initial state
+  updateButtons();
+});

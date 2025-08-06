@@ -33,11 +33,18 @@
 <!-- Menu Section -->
 <section id="menu">
   <h2>MENU</h2>
-  <div class="menu-categories">  
-    <% menu_items.map(&:category).each do |it| %>
-      <%= content_tag(:span, it.humanize, class: (it == menu_items.first.category ? "active" : ""), "data-category": it) %>
-    <% end %>    
+  <div class="menu-scroll-wrapper">
+    <button class="scroll-btn left" aria-label="Scroll left">&#9664;</button>
+  
+    <div class="menu-categories" id="categoryScroll">
+      <% menu_items.map(&:category).uniq.each_with_index do |it, index| %>
+        <%= content_tag(:span, it.humanize, class: (index == 0 ? "active" : ""), "data-category": it) %>
+      <% end %>
+    </div>
+  
+    <button class="scroll-btn right" aria-label="Scroll right">&#9654;</button>
   </div>
+  
 
   <div class="menu-items">
     <% menu_items.first.items.each_with_index do |item, index| %>

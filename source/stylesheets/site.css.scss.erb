@@ -374,34 +374,58 @@ header {
     margin-bottom: 1rem;
   }
 
-  .menu-categories {
+  .menu-scroll-wrapper {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.5rem;
     margin: 2rem 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
 
-    &::-webkit-scrollbar {
-      display: none;
+    .scroll-btn {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: $primary-color;
+      cursor: pointer;
+      padding: 0.25rem;
+      user-select: none;
+      transition: opacity 0.3s;
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
     }
 
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    .menu-categories {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      flex: 1;
 
-    span {
-      flex: 0 0 auto;
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      transition: border-color 0.3s, color 0.3s;
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
-      &.active,
-      &:hover {
-        border-color: $primary-color;
-        color: $primary-color;
+      span {
+        flex: 0 0 auto;
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: border-color 0.3s, color 0.3s;
+        white-space: nowrap;
+
+        &.active,
+        &:hover {
+          border-color: $primary-color;
+          color: $primary-color;
+        }
       }
     }
   }
