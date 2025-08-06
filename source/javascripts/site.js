@@ -16,6 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
   if (yearEl) {
     yearEl.textContent = year;
   }
+
+  const cookieNotice = document.getElementById("cookie-notice");
+  const acceptBtn = document.getElementById("accept-cookies");
+
+  if (!localStorage.getItem("cookiesAccepted")) {
+    cookieNotice.style.display = "block";
+  }
+
+  acceptBtn.addEventListener("click", () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    cookieNotice.style.display = "none";
+  });
   
   const categories = document.querySelectorAll(".menu-categories span");
   const menuItemsContainer = document.querySelector(".menu-items");

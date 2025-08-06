@@ -701,3 +701,36 @@ header {
     }
   }
 }
+
+.cookie-notice {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--background-color, #fff);
+  color: var(--text-color, #333);
+  border-top: 1px solid #ccc;
+  padding: 1rem;
+  font-size: 0.9rem;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+
+  button {
+    margin-left: 1rem;
+    background: var(--primary-color, #16796A);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+
+    &:hover {
+      background: var(--secondary-color, #0fb1a1);
+    }
+  }
+}
