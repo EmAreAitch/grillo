@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/statonjr/middleman-sitemap.git
+  revision: 15efdded087fbf2475bc878e02aec1c2c480a3e9
+  ref: 15efdded087fbf2475bc878e02aec1c2c480a3e9
+  specs:
+    middleman-sitemap (0.0.13)
+      middleman-core (>= 3.2.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -155,6 +163,7 @@ DEPENDENCIES
   irb (~> 1.15)
   middleman (~> 4.5)
   middleman-autoprefixer (~> 3.0)
+  middleman-sitemap!
   middleman-sprockets (~> 4.1)
   terser (~> 1.1)
   tzinfo-data

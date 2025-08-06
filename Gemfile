@@ -11,3 +11,5 @@ gem "uri", "~> 1.0"
 gem "irb", "~> 1.15"
 
 gem "middleman-sprockets", "~> 4.1"
+
+gem 'middleman-sitemap', github: 'statonjr/middleman-sitemap', ref: '15efdded087fbf2475bc878e02aec1c2c480a3e9'

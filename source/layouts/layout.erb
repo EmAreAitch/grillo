@@ -18,6 +18,8 @@
     <title>
       <%= "#{(current_page.data.title || yield_content(:title))&.concat(' | ')}#{data.site.name}" %>
     </title>
+    <meta name="description" content="<%= current_page.data.description || "Delightful dishes in the heart of London." %>">
+    <link rel="canonical" href="<%= config[:root_url] + current_page.url %>">  
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site", defer: true %>
     <%= yield_content :head %>

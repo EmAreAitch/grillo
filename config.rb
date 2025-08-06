@@ -69,4 +69,6 @@ configure :build do
 end
 
 set :root_url, ENV['URL'] || 'http://localhost:4567'
+set :port, 3000
 activate :directory_indexes
+activate :sitemap, hostname: config[:root_url]
