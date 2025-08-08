@@ -11,7 +11,11 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const categories = document.querySelectorAll(".menu-categories span");
 const menuItemsContainer = document.querySelector(".menu-items");
 let menuData = {};
-
+let images = [
+  <% 9.times do %>
+    "<%= image_path("#{it + 1}.avif") %>",
+  <% end %>
+];
 if (categories.length && menuItemsContainer) {
   fetch("/json/menu.json")
     .then((res) => res.json())
@@ -38,7 +42,7 @@ if (categories.length && menuItemsContainer) {
         .map(
           (item, index) => `
           <div class="menu-item">
-            <img src="/images/${index + 1}.avif" alt="${item.name}">
+            <img src="${images[index]}" alt="${item.name}">
             <div class="info">
               <h3>${item.name}</h3>
               <p>${item.description}</p>
