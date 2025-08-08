@@ -5,6 +5,8 @@ $background-color: <%= data.site.styles.background_color %>;
 $text-color: <%= data.site.styles.text_color %>;
 $heading-color: $primary-color;
 $font-family: 'Montserrat', sans-serif;
+$heading-font-family: 'Righteous', cursive;
+
 
 // === RESET ===
 * {
@@ -20,6 +22,12 @@ body {
   background-image: url("/images/dark-stripes-light.png");
   line-height: 1.6;
 }
+
+// Use Righteous for all headings (h1-h6)
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font-family;    
+}
+
 
 a {
   text-decoration: none;
@@ -220,15 +228,20 @@ footer {
 
 // === HEADER ===
 header {
-  @extend .container;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
-  padding: 1rem 2rem;
-  position: relative;
+  border-bottom: 1px solid #eee;  
+  position: sticky;
+  top: 0;
+  z-index: 1000;  // ensures it stays above other content when scrolling
+  background-color: $background-color; // add a solid or semi-transparent bg to avoid see-through
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-image: url("/images/dark-stripes-light.png");
 
   .header-container {
+    @extend .container;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
